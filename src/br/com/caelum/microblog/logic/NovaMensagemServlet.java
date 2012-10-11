@@ -1,6 +1,9 @@
 package br.com.caelum.microblog.logic;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,6 +24,10 @@ public class NovaMensagemServlet extends HttpServlet {
 		
 		new MensagemDao().adiciona(mensagem);
 		
-		response.sendRedirect(request.getContextPath() + "/timeline.jsp");
+		List<Mensagem> lista = new MensagemDao().lista();
+		request.setAttribute("mensagens", lista);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("timeline.jsp");
+		dispatcher.forward(request, response);
 	}
 }
