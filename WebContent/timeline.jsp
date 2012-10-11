@@ -1,3 +1,5 @@
+<%@page import="java.util.Collections"%>
+<%@page import="java.util.List"%>
 <%@page import="br.com.caelum.microblog.model.Mensagem"%>
 <%@page import="br.com.caelum.microblog.dao.MensagemDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -19,7 +21,9 @@
 
 <% 
 	MensagemDao dao = new MensagemDao();
-	for (Mensagem msg : dao.lista()) {
+	List<Mensagem> lista = dao.lista();
+	Collections.reverse(lista);
+	for (Mensagem msg : lista) {
 %>
 <p>
 	<%= msg.getDescricao() %>
