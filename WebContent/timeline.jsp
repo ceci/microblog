@@ -22,7 +22,6 @@
 <% 
 	MensagemDao dao = new MensagemDao();
 	List<Mensagem> lista = dao.lista();
-	Collections.reverse(lista);
 	for (Mensagem msg : lista) {
 %>
 <p>

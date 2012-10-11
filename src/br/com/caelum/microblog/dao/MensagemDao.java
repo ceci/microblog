@@ -1,6 +1,7 @@
 package br.com.caelum.microblog.dao;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import br.com.caelum.microblog.model.Mensagem;
@@ -16,7 +17,9 @@ public class MensagemDao {
 	}
 	
 	public List<Mensagem> lista() {
-		return mensagens;
+		List<Mensagem> copia = new ArrayList<>(mensagens);
+		Collections.reverse(copia);
+		return copia;
 	}
 
 	public void adiciona(Mensagem mensagem) {
